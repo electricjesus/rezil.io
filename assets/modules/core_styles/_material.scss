@@ -1,0 +1,194 @@
+
+
+$blue: #4FA6DC;
+$green: #96CB50;
+$orange: #DE6E4B;
+$gray: #C3DFE0;
+$dark: #216171;
+$white: #F9F9F9;
+
+$paper: url('/images/paper.png');
+$groovepaper: url('/images/groovepaper.png');
+
+$denim: url('/images/denim.png');
+$denim_invert: url('/images/denim_invert.png');
+$graph: url('/images/graphy.png');
+$dots: url('/images/subtle-dots.png');
+$knobs: url('/images/little-knobs.png');
+$tile: url('/images/tile.png');
+$textile: url('/images/textile.png');
+
+@mixin material($color, $texture, $opacity) {
+	//return material bg and color
+	background: $texture;
+	background-color: rgba($color,$opacity);
+}
+
+.m-paper {
+	@include material($gray,$paper,1);
+	background-size: 250px 292px;
+}
+.m-groovepaper{
+	@include material($white,$groovepaper,1);
+	background-size: 300px 300px;
+}
+.m-tile{
+	@include material($gray,$tile,1);
+}
+.m-cloth{
+	@include material($blue,$textile,1);
+	background-size: 150px 150px;
+}
+.m-denim{
+	@include material($blue,$denim,1);
+}
+
+
+
+$outOnly   : cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$inOnly    : cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$inOut : cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
+@mixin transition ($property,$easing,$ms){
+  transition: $property $ms $easing;
+  -webkit-transition: $property $ms $easing;
+  -moz-transition: $property $ms $easing;
+}
+
+$z-depth-css:                          false;
+$z-depth-browser-prefix:               true;
+$z-depth-animation:                    true;
+$z-depth-animation-time:               .28s;
+$z-depth-animation-function:           cubic-bezier(.4, 0, .2, 1);
+
+
+
+// Shadows
+// --------------------------------------------------------------------------------
+
+$z-depth: (
+  // z-depth-1
+  (0 1px 3px 1px rgba(0, 0, 0, 0.16), 0 2px 2px 1px rgba(0, 0, 0, 0.3)),
+
+  // z-depth-2
+  (0 6px 9px 2px rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2)),
+
+  // z-depth-3
+  (0 12px 15px 3px rgba(0, 0, 0, 0.19), 0 12px 15px 0 rgba(0, 0, 0, 0.24)),
+
+  // z-depth-4
+  (0 18px 21px 4px rgba(0, 0, 0, 0.21), 0 16px 28px 0 rgba(0, 0, 0, 0.22)),
+
+  // z-depth-5
+  (0 24px 27px 5px rgba(0, 0, 0, 0.22), 0 27px 24px 0 rgba(0, 0, 0, 0.2))
+);
+
+
+
+// Mixins
+// --------------------------------------------------------------------------------
+
+@mixin prefixer ($property, $value, $prefixes) {
+  @if $z-depth-browser-prefix {
+    @each $prefix in $prefixes {
+      @if $prefix == webkit {
+        -webkit-#{$property}: $value;
+      }
+      @else if $prefix == moz {
+        -moz-#{$property}: $value;
+      }
+      @else if $prefix == ms {
+        -ms-#{$property}: $value;
+      }
+      @else if $prefix == o {
+        -o-#{$property}: $value;
+      }
+      @else if $prefix == spec {
+        #{$property}: $value;
+      }
+      @else  {
+        @warn "Unrecognized prefix: #{$prefix}";
+      }
+    }
+  } @else {
+    #{$property}: $value;
+  }
+}
+
+// Top & Bottom
+@mixin z-depth($depth: 1, $orientation: null) {
+  @if $orientation == top {
+    @include prefixer(box-shadow, nth(nth($z-depth, $depth), 1), spec);
+  }
+  @else if $orientation == bottom {
+    @include prefixer(box-shadow, nth(nth($z-depth, $depth), 2), spec);
+  }
+  @else {
+    @include prefixer(box-shadow, nth($z-depth, $depth), spec);
+  }
+}
+
+// Top
+@mixin z-depth-top($depth: 1) {
+  @include z-depth($depth, top);
+}
+
+// Bottom
+@mixin z-depth-bottom($depth: 1) {
+  @include z-depth($depth, bottom);
+}
+
+// Animation
+@mixin z-depth-animation($depth-after, $orientation: full) {
+  &:hover,
+  &:focus {
+    @if $orientation == top {
+      @include z-depth-top($depth-after);
+    }
+    @else if $orientation == bottom {
+      @include z-depth-bottom($depth-after);
+    }
+    @else {
+      @include z-depth($depth-after);
+    }
+  }
+}
+
+
+
+// Classes
+// --------------------------------------------------------------------------------
+
+@if $z-depth-css {
+  .z-depth {
+    @for $i from 1 to length($z-depth) + 1 {
+      &-z#{$i} {
+        @include z-depth($i);
+
+        &-top {
+          @include z-depth-top($i);
+        }
+
+        &-bottom {
+          @include z-depth-bottom($i);
+        }
+      }
+    }
+
+
+    // z-depth-animation
+    @if $z-depth-animation {
+      &-animation {
+        &:hover {
+          .z-depth-z1,
+          .z-depth-z2,
+          .z-depth-z3,
+          .z-depth-z4,
+          .z-depth-z5 {
+            @include prefixer(transition, box-shadow  $z-depth-animation-time $z-depth-animation-function, webkit o spec);
+          }
+        }
+      }
+    }
+  }
+}

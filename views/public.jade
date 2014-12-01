@@ -1,0 +1,27 @@
+doctype html
+html(ng-app="MaterialApp")
+    head
+        title Public
+        base(href="http://#{base}/")
+        meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+
+        // STYLES
+        link(rel="stylesheet", href="/styles/dependencies/foundation/foundation.css")
+        link(rel="stylesheet", href="/styles/dependencies/foundation/normalize.css")
+        link(rel="stylesheet", href="/styles/public/app.css")
+        // STYLES END
+    body
+        // TEMPLATES
+        script(type="text/javascript", src="/templates/jst_public.js")
+        // TEMPLATES END
+        aside
+        section
+            ng-view
+        // SCRIPTS
+        script(src="/js/dependencies/angular/angular.js")
+        script(src="/js/dependencies/angular/angular-animate.js")
+        script(src="/js/dependencies/angular/angular-resource.js")
+        script(src="/js/dependencies/angular/angular-route.js")
+        script(src="/js/dependencies/lodash/lodash.js")
+        script(src="/js/public/app.js")
+        // SCRIPTS END
