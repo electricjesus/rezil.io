@@ -19,7 +19,8 @@
     "angular-resource": "latest",
     "angular-animate": "latest",
     "angular-mocks": "latest",
-    "foundation": "latest",
+    "angular-aria": "latest",
+    "angular-material":"latest",
     "lodash": "latest"
   },
   "install": {
@@ -32,30 +33,24 @@
         "bower_components/angular/angular.js",
         "bower_components/angular-animate/angular-animate.js",
         "bower_components/angular-route/angular-route.js",
-        "bower_components/angular-resource/angular-resource.js"
+        "bower_components/angular-resource/angular-resource.js",
+        "bower_components/angular-aria/angular-aria.js",
+        "bower_components/angular-material/angular-material.js"
       ],
       "lodash": [
         "bower_components/lodash/dist/lodash.js"
       ],
-      "foundation":[
-      	"bower_components/foundation/css/foundation.css",
-      	"bower_components/foundation/css/normalize.css"
+      "angular-material":[
+        "bower_components/angular-material/angular-material.css",
+        "bower_components/angular-material/themes/blue-theme.css"
       ]
     },
     "ignore": [
-      "jquery",
-      "jquery.fs.selecter",
-      "jquery.fs.stepper",
-      "icheck",
-      "jquery-placeholder",
       "angular-animate",
-      "angular-touch",
+      "angular-aria",
       "angular-mocks",
-      "angular-route",
       "angular-resource",
-      "jquery.cookie",
-      "fastclick",
-      "modernizr"
+      "angular-route"
     ]
   }
 }

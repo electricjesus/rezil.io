@@ -1,4 +1,4 @@
-app = angular.module "MaterialApp",["ngResource","ngRoute","ngAnimate"]
+app = angular.module "MaterialApp",["ngResource","ngRoute","ngAnimate","ngMaterial"]
 
 app.config [
   "$routeProvider"
@@ -17,5 +17,9 @@ app.controller "MainCtrl",[
   "$scope"
   ($s)->
 
+    $s.title1 = 'Button'
+    $s.title4 = 'Warn'
+    $s.isDisabled = true
+    $s.googleUrl = 'http://google.com'
     return
 ]
