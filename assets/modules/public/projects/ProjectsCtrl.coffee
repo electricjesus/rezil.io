@@ -61,6 +61,7 @@ app.controller "ProjectsCtrl",[
     
     $s.goTo = (id)->
       $l.path "/project/"+id if id
-    
+    $s.create = ->
+      $s.goTo "create"
     return
 ]
