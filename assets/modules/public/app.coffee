@@ -31,6 +31,8 @@ app.config [
       template: JST["public/commit/commit.html"]()
       controller:"ItemCtrl"
     
-    .otherwise redirectTo:"/"
+    .otherwise redirectTo:"/login"
+    
+    return
 ]
 
