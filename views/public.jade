@@ -17,6 +17,8 @@ html(ng-app="Rezil.io")
         // TEMPLATES
         script(type="text/javascript", src="/templates/jst_public.js")
         // TEMPLATES END
+        nav(ng-controller="NavigatorCtrl",ng-show="show")
+          a(href="/login") Login Page
         section#view-holder
             ng-view
         // SCRIPTS
@@ -31,10 +33,12 @@ html(ng-app="Rezil.io")
         script(src="/js/dependencies/angular/angularfire.js")
         script(src="/js/dependencies/lodash/lodash.js")
         script(src="/js/public/app.js")
+        script(src="/js/public/NavigatorCtrl.js")
         script(src="/js/public/commit/CommitCtrl.js")
         script(src="/js/public/item/ItemCtrl.js")
         script(src="/js/public/list/ListCtrl.js")
         script(src="/js/public/login/LoginCtrl.js")
+        script(src="/js/public/moderator/ModeratorDir.js")
         script(src="/js/public/project/ProjectCtrl.js")
         script(src="/js/public/projects/ProjectsCtrl.js")
         // SCRIPTS END
