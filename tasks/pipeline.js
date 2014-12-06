@@ -38,6 +38,7 @@ var users = {
       'public/**/*.css'
     ],
     js:[
+      'dependencies/firebase/*.js',
       'dependencies/hammerjs/*.js',
       'dependencies/angular/angular.js',
       'dependencies/angular/*.js',

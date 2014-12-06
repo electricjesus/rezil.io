@@ -1,33 +1,6 @@
 div
-  md-content
-    section(layout='row', layout-sm='column', layout-align='center center')
-      md-button {{title1}}
-      md-button.md-primary(md-no-ink='') Primary (md-noink)
-      md-button.md-primary(ng-disabled='isDisabled') Disabled
-      md-button.md-warn(ng-click='isDisabled = !isDisabled') {{title4}}
-    section(layout='row', layout-sm='column', layout-align='center center')
-      md-button.md-raised Button
-      md-button.md-raised.md-primary Primary
-      md-button.md-raised.md-primary(ng-disabled='true') Disabled
-      md-button.md-raised.md-warn Warn
-      .label raised
-    section(layout='row', layout-sm='column', layout-align='center center')
-      md-button.md-fab(aria-label='Time')
-        md-icon(icon='/img/icons/ic_access_time_24px.svg', style='width: 24px; height: 24px;')
-      md-button.md-fab(aria-label='New document')
-        md-icon(icon='/img/icons/ic_insert_drive_file_24px.svg', style='width: 24px; height: 24px;')
-      md-button.md-fab(ng-disabled='true', aria-label='Comment')
-        md-icon(icon='/img/icons/ic_comment_24px.svg', style='width: 24px; height: 24px;')
-      md-button.md-fab.md-primary(md-theme='cyan', aria-label='Profile')
-        md-icon(icon='/img/icons/ic_people_24px.svg', style='width: 24px; height: 24px;')
-      .label FAB
-    section(layout='row', layout-sm='column', layout-align='center center')
-      md-button(ng-href='{{googleUrl}}', target='_blank') Go to Google
-      md-button RSVP
-    section(layout='row', layout-sm='column', layout-align='center center')
-      md-button.md-primary(md-theme='green') Button
-      md-button.md-primary.md-raised(md-theme='indigo') Button
-      md-button.md-primary.md-raised(md-theme='orange') Button
-      md-button.md-primary(md-theme='cyan') Button
-      .label Themed
-
+  ul
+    li(ng-repeat="(key,message) in messages")
+      textarea(ng-model="message.message",ng-change="updateMessage(key,message)")
+  textarea(ng-model="m")
+  button(ng-click="addMessage()") Add

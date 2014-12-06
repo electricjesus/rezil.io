@@ -21,7 +21,9 @@
     "angular-mocks": "latest",
     "angular-aria": "latest",
     "angular-material":"latest",
-    "lodash": "latest"
+    "lodash": "latest",
+    "firebase": "latest",
+    "angularfire":"latest"
   },
   "install": {
     "path": {
@@ -29,13 +31,17 @@
       "js": "assets/js/dependencies"
     },
     "sources": {
+      "firebase":[
+        "bower_components/firebase/firebase.js"
+      ],
       "angular": [
         "bower_components/angular/angular.js",
         "bower_components/angular-animate/angular-animate.js",
         "bower_components/angular-route/angular-route.js",
         "bower_components/angular-resource/angular-resource.js",
         "bower_components/angular-aria/angular-aria.js",
-        "bower_components/angular-material/angular-material.js"
+        "bower_components/angular-material/angular-material.js",
+        "bower_components/angularfire/dist/angularfire.js"
       ],
       "lodash": [
         "bower_components/lodash/dist/lodash.js"
@@ -50,7 +56,8 @@
       "angular-aria",
       "angular-mocks",
       "angular-resource",
-      "angular-route"
+      "angular-route",
+      "angularfire"
     ]
   }
 }
