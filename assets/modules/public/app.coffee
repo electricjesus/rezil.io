@@ -1,4 +1,4 @@
-app = angular.module "MaterialApp",["ngResource","ngRoute","ngAnimate","ngMaterial","firebase"]
+app = angular.module "Rezil.io",["ngResource","ngRoute","ngAnimate","ngMaterial","firebase"]
 
 app.config [
   "$routeProvider"
@@ -7,36 +7,30 @@ app.config [
     $locationProvider.html5Mode true
       
     $routeProvider
+    .when "/login",
+      template: JST["public/login/login.html"]()
+      controller: "LoginCtrl"
+      
     .when "/", 
-      template: JST["public/main.html"]()
-      controller:"MainCtrl"
+      template: JST["public/projects/projects.html"]()
+      controller:"ProjectsCtrl"
+    
+    .when "/project/:id", 
+      template: JST["public/project/project.html"]()
+      controller:"ProjectCtrl"
+    
+    .when "/project/:id/:listId", 
+      template: JST["public/list/list.html"]()
+      controller:"ListCtrl"
+    
+    .when "/project/:id/:listId/:itemId", 
+      template: JST["public/item/item.html"]()
+      controller:"ItemCtrl"
+    
+    .when "/project/:id/:listId/:itemId/commit", 
+      template: JST["public/commit/commit.html"]()
+      controller:"ItemCtrl"
+    
     .otherwise redirectTo:"/"
 ]
 
-app.controller "MainCtrl",[
-  "$scope"
-  "$firebase"
-  ($s, $fb)->
-    messagesRef = new Firebase "https://intense-inferno-653.firebaseio.com/messages"
-    $s.messages = $fb(messagesRef).$asArray()
-
-    $s.m = ""
-    $s.addMessage = ->
-      $s.messages.$add message:$s.m
-      $s.m = ""
-
-    $s.updateMessage = (key,message)->
-      $s.messages[key] = message
-      $s.messages.$save(key)
-    return
-]
-
-app.controller "AnotherCtrl",[
-  "$scope"
-  "$firebase"
-  ($s, $fb)->
-    messageRef = new Firebase "https://intense-inferno-653.firebaseio.com/messages/1"
-    $s.message = $fb(messageRef).$asObject()
-
-    return
-]
