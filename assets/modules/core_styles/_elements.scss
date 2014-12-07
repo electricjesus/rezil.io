@@ -7,3 +7,49 @@
     -ms-user-select: none;
     user-select: none;
 }
+input{
+  width: 100%;
+}
+.light-btn{
+  width: 100%;
+  line-height: 40px;
+  color: $blue;
+  font-weight: 300;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.8em;
+  &:hover{
+    color: $blue*1.2;
+    font-weight: bold;
+  }
+}
+.progress-counter{
+  position: relative;
+  width: 54px;
+  height: 54px;
+  md-progress-circular{
+    
+  }
+  h3{
+    position: absolute;
+    top: 15px;
+    color: $blue;
+    margin: 0px;
+    text-align: center;
+    width: 100%;
+    font-weight: 300;
+  }
+}
+
+.toolbar-plus{
+  position: absolute;
+  color: white;
+  top: 0px;
+  right: 0px;
+  width: 50px;
+  text-align: center;
+  line-height: 64px;
+}
+md-toast{
+  position: fixed !important;
+}

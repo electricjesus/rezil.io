@@ -1,0 +1,20 @@
+md-content
+  md-list
+    md-item(ng-repeat="mod in moderators")
+      md-item-content
+        .md-tile-content
+          h3 {{mod.name}}
+          p < {{ mod.email }} >
+        .md-tile-right(ng-click="removeModerator(mod)")
+          .icon-x
+      md-divider(ng-if="!$last")
+  form(style="padding: 20px")
+    md-text-float(label="Search for user",ng-model="search",ng-change="searchForUser()")
+    label results
+    md-list
+    md-item(ng-repeat="user in usersFound",ng-click="makeModerator(user)")
+      md-item-content
+        .md-tile-content
+          h3 {{user.name}}
+          p < {{ user.email }} >
+      md-divider(ng-if="!$last")

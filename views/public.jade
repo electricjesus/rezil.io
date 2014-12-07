@@ -9,14 +9,18 @@ html(ng-app="Rezil.io")
         link(rel="stylesheet", href="/styles/dependencies/angular-material/angular-material.css")
         link(rel="stylesheet", href="/styles/dependencies/angular-material/blue-theme.css")
         link(rel="stylesheet", href="/styles/public/app.css")
+        link(rel="stylesheet", href="/styles/public/comment-box/comment-box.css")
         link(rel="stylesheet", href="/styles/public/list/list.css")
         link(rel="stylesheet", href="/styles/public/login/login.css")
+        link(rel="stylesheet", href="/styles/public/project/project.css")
         link(rel="stylesheet", href="/styles/public/projects/projects.css")
         // STYLES END
     body
         // TEMPLATES
         script(type="text/javascript", src="/templates/jst_public.js")
         // TEMPLATES END
+        
+        
         nav(ng-controller="NavigatorCtrl",ng-show="show")
           a(href="/login") Login Page
         section#view-holder
@@ -34,6 +38,7 @@ html(ng-app="Rezil.io")
         script(src="/js/dependencies/lodash/lodash.js")
         script(src="/js/public/app.js")
         script(src="/js/public/NavigatorCtrl.js")
+        script(src="/js/public/comment-box/CommentBoxDir.js")
         script(src="/js/public/commit/CommitCtrl.js")
         script(src="/js/public/item/ItemCtrl.js")
         script(src="/js/public/list/ListCtrl.js")
