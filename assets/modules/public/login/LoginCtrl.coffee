@@ -9,7 +9,7 @@ app.factory("Auth", [
   return $firebaseAuth(ref);
 ]
 
-# and use it in our login controller
+# and use it in our login controller.
 app.controller "LoginCtrl",[
   "$scope"
   "$firebase"
