@@ -62,9 +62,9 @@ app.controller "ItemCtrl",[
       
       return impact
       
-    $s.commit = (item)->
+    $s.commit = ->
       if $rp.id isnt "create"
-        path = "/project/"+item.projectId+"/"+item.listId+"/"+item.id+"/commit"
+        path = "/project/"+$rp.id+"/"+$rp.listId+"/"+$rp.itemId+"/commit"
         $l.path path
       return    
     $s.save = ->
