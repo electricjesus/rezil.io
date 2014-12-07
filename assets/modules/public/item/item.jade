@@ -1,0 +1,62 @@
+.page.project-page
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span {{ item.name || "Create New Item" }}
+  md-content
+    form(style="padding:20px;")
+      md-text-float(label="Item Name",ng-model="item.name")
+      md-text-float(label="Description",ng-model="item.description")
+      label Goal
+      md-list
+        md-item(ng-repeat="goal in item.goal")
+          div(layout="row",layout-margin)
+            div(flex=40)
+              md-text-float(label="Unit",ng-model="goal.unit")
+            div(flex=40)
+              md-text-float(label="Value",ng-model="goal.value")
+            div(flex=20)
+              .icon-x.rm-goal(ng-click="item.goal.splice($index,1)")
+              
+      .light-btn(ng-click="addGoal()") add goal
+      div(layout="row", layout-align="space-between center")
+        md-button(ng-click="cancel()") CANCEL
+        md-button.md-raise.md-primary(ng-click="save()") SAVE
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span In-Charge
+  moderator-selector(ng-model="item.moderators")
+  
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Progress
+  md-content#project-progress
+    div(layout="row",layout-align="space-around center")
+      .progress-counter
+        md-progress-circular(md-mode="determinate",value="70")
+        h3 70
+      md-button.md-raised.md-warn(ng-disabled="true") EXECUTE
+
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Commitments
+      .toolbar-plus.icon-commit(ng-click="commit(item)")
+  
+  md-content
+    md-list
+      md-item.scale-fade(ng-repeat="commit in commits")
+        .commit-object
+          header(layout="row",layout-align="space-between center")
+            div {{ commit.user.name }}
+            div {{ commit.value }} {{ item.goal[commit.unit].unit}}
+          md-progress-linear(md-mode="determinate",ng-value="{{impact(commit)}}")
+          footer(layout="row",layout-align="space-between center")
+            div < {{ commit.user.email }} >
+            div {{ commit.date | date:'mediumDate' }}
+        md-divider(ng-if="!$last")
+    section#commit-container(layout="row",layout-align="center center",layout-margin)
+      div(flex=90)
+        md-button.expand.md-raised.md-primary(ng-click="commit(item)") COMMIT

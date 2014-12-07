@@ -1,0 +1,66 @@
+.page.project-page
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span {{ project.name || "Create New Project" }}
+  md-content
+    form(style="padding:20px;")
+      md-text-float(label="Project Name",ng-model="project.name")
+      md-text-float(label="Target Location",ng-model="project.location")
+      md-text-float(label="Description",ng-model="project.description")
+      
+      
+      div(layout="row", layout-align="space-between center")
+        md-button(ng-click="cancel()") CANCEL
+        md-button.md-raise.md-primary(ng-click="save()") SAVE
+        
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span In-Charge
+  moderator-selector(ng-model="project.moderators")
+      
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Progress
+  md-content#project-progress
+    div(layout="row",layout-align="space-around center")
+      .progress-counter
+        md-progress-circular(md-mode="determinate",value="70")
+        h3 70
+      md-button.md-raised.md-warn(ng-disabled="true") EXECUTE
+  
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Commitment Groups
+      .toolbar-plus.icon-plus(ng-click="goToList('create')")
+  md-content#list-items
+    md-list
+      md-item.scale-fade(ng-repeat="group in lists | orderBy:'index'")
+        .commitment-group
+          aside
+            .icon-up(ng-click="move('down',group,lists)")
+            .icon-down(ng-click="move('up',group,lists)")
+          header(ng-click="goToList(group.id)")
+            h3 {{group.name}}
+            md-progress-linear(md-mode="determinate",ng-value="{{group.progress}}")
+          aside
+            .icon-plus(ng-click="goToItem('create',group.id)")
+        md-list
+          md-item.scale-fade(ng-repeat="item in groupItems = ( items| filter:{listId: group.id }:true )  | orderBy:'index'")
+            md-item-content
+              .item-object.tabbed(ng-class="{last:$last}")
+                aside
+                  .icon-up(ng-click="move('down',item,groupItems)")
+                  .icon-down(ng-click="move('up',item,groupItems)")
+                header(ng-click="goToItem(item.id,group.id)")
+                  h4 {{item.name}}
+                  md-progress-linear(md-mode="determinate",ng-value="{{item.progress}}")
+                  div {{ item.goal[0].value * (item.progress/100) }} / {{ item.goal[0].value }} {{ item.goal[0].unit }}
+                aside
+                  .icon-commit(ng-click="commit(item)")
+          
+        md-divider(ng-if="!$last")
+  comment-box(type="project",id="{{PROJECT_ID}}",label="Discussions")

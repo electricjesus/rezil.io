@@ -1,0 +1,51 @@
+.page.projects-page
+  md-tabs(md-selected="view.selectedIndex")
+    md-tab#tab1(aria-controlers="tab1-content") NEW
+    md-tab#tab2(aria-controlers="tab2-content") FOLLOWED
+    md-tab#tab3(aria-controlers="tab3-content") ACTIVE
+  ng-switch.tabpanel-container(on="view.selectedIndex")
+    #tab1-content(role="tabpanel",aria-labelledby="tab1",ng-switch-when=0,md-swipe-left="view.next()",md-swipe-right="view.prev()")
+      ul.projects-list
+        li.scale-fade(ng-repeat="proj in projects| filter: projectFilter")
+          header
+            div
+              h2 {{proj.name}}
+              label {{proj.location}}
+            aside
+              .progress-counter
+                md-progress-circular(md-mode="determinate",value="{{proj.complete}}")
+                h3 {{proj.complete}}
+          article
+            p {{proj.description}}
+          md-button.expand(ng-click="goTo(proj.id)") LEARN MORE
+    #tab2-content(role="tabpanel",aria-labelledby="tab2",ng-switch-when=1,md-swipe-left="view.next()",md-swipe-right="view.prev()")
+      ul.projects-list
+        li.scale-fade(ng-repeat="proj in projects | filter: projectFilter")
+          header
+            div
+              h2 {{proj.name}}
+              label {{proj.location}}
+            aside
+              .progress-counter
+                md-progress-circular(md-mode="determinate",value="{{proj.complete}}")
+                h3 {{proj.complete}}
+          article
+            p {{proj.description}}
+          md-button.expand(ng-click="goTo(proj.id)") LEARN MORE
+    #tab3-content(role="tabpanel",aria-labelledby="tab3",ng-switch-when=2,md-swipe-left="view.next()",md-swipe-right="view.prev()")
+      ul.projects-list
+        li.scale-fade(ng-repeat="proj in projects | filter: projectFilter")
+          header
+            div
+              h2 {{proj.name}}
+              label {{proj.location}}
+            aside
+              .progress-counter
+                md-progress-circular(md-mode="determinate",value="{{proj.complete}}")
+                h3 {{proj.complete}}
+          article
+            p {{proj.description}}
+          md-button.expand(ng-click="goTo(proj.id)") LEARN MORE
+
+  md-button#create-project.md-fab(ng-click="create()",aria-label="create project")
+    .icon-plus

@@ -1,0 +1,89 @@
+@import '../../core_styles/core';
+.page.projects-page{
+  md-tabs{
+    @include  z-depth(1,"bottom");
+  }
+}
+.projects-list{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  
+  li{
+    list-style: none;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    height: 203px;
+    border-radius: 5px;
+    header{
+      position: relative;
+      height: 100px;
+      width: 100%;
+      background: $orange;
+      &>div{
+        position: relative;
+        float: left;
+        width: calc(100% - 70px);
+        height: 100px;
+        padding: 5px;
+        
+        h2,label{
+          display: block; /* Fallback for non-webkit */
+          display: -webkit-box;
+          color: white;
+          margin: 0px;
+          -webkit-line-clamp:1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          &:before{
+            color: white;
+          }
+        }
+        label{
+          font-size: 0.8em;
+          &:before{
+            color: white;
+          }
+        }
+      }
+      &>aside{
+        position: relative;
+        float: left;
+        width: 60px;
+        background: rgba(white,0.9);
+        height: 100px;
+        
+        padding-top: 23px;
+        padding-left: 2px;
+        
+      }
+    }
+    article{
+      display: block;
+      display: -webkit-box;
+      max-width: 100%;
+      height: 70px;
+      overflow: hidden;
+      padding: 5px;
+      text-overflow: ellipsis;
+      p{
+        font-size: 0.8em;
+        margin: 0px;
+      }
+    }
+    
+    @include  z-depth(1,"bottom");
+  }
+}
+.md-button.expand{
+  width: 100%;
+}
+
+#create-project{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}

@@ -7,71 +7,49 @@
     -ms-user-select: none;
     user-select: none;
 }
-
-.btn{
-	width: auto;
-	padding: 0px 15px;
-	line-height: 37px;
-	cursor: pointer;
-	background: $blue;
-	color: $white;
-	text-align: center;
-
-	font-family: 'Roboto', sans-serif;
-	border-radius: 5px;
-	@extend .noselect;
-	&.contrast{
-		border: $blue*1.2 1px solid;
-	}
-	&.embed{
-		border: $blue*0.8 1px solid;
-	}
-	&.expand{
-		width: 100% !important;
-	}
-	&.raised{
-		@include  z-depth-top(2);
-	}
-	&:hover{
-		@include  z-depth-top(1);
-	}
-	&:active{
-		@include  z-depth-top(3);
-		background: $blue*1.1;
-	}
-	@include transition(all,$inOut,.28s);
-	
-	&.disabled {
-		@include z-depth-top(1);
-		opacity: 0.8;
-	}
-	&.left{
-		float:left;
-	}
-	&.right{
-		float: right;
-	}
+input{
+  width: 100%;
 }
-.btn-flat{
-	@extend .noselect;
-	width: auto;
-	padding: 0px 15px;
-	line-height: 37px;
-	margin: 15px;
-	cursor: pointer;
-	color: $blue;
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
-	&:hover{
-		color: $blue*0.8;
-	}
-	&:active{
-		color: $blue*1.2;
-	}
-	&.left{
-		float:left;
-	}
-	&.right{
-		float: right;
-	}
+.light-btn{
+  width: 100%;
+  line-height: 40px;
+  color: $blue;
+  font-weight: 300;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.8em;
+  &:hover{
+    color: $blue*1.2;
+    font-weight: bold;
+  }
+}
+.progress-counter{
+  position: relative;
+  width: 54px;
+  height: 54px;
+  md-progress-circular{
+    
+  }
+  h3{
+    position: absolute;
+    top: 15px;
+    color: $blue;
+    margin: 0px;
+    text-align: center;
+    width: 100%;
+    font-weight: 300;
+  }
+}
+
+.toolbar-plus{
+  position: absolute;
+  color: white;
+  top: 0px;
+  right: 0px;
+  width: 50px;
+  text-align: center;
+  line-height: 64px;
+}
+md-toast{
+  position: fixed !important;
 }

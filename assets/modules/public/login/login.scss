@@ -1,0 +1,54 @@
+#login{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(http://s16.postimg.org/5c2uvthhh/login.jpg)  no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 40px;
+  header{
+    position: relative;
+    h3{
+      width: 100%;
+      text-align: center;
+      font-weight: 400;
+      color: white;
+    }
+    div{
+      width: 100%;
+      text-align: center;
+      font-family:Roboto, 'Helvetica Neue', sans-serif;
+      font-weight: 300;
+      color: white;
+      font-size: 0.9em;
+    }
+  }
+  form{
+      position: absolute;
+      width: 210px;
+      height: 70px;
+      bottom: 100px;
+      padding: 0px;
+      left: calc(50% - 105px);
+    div{
+      width: 100%;
+      text-align: center;
+      font-family:Roboto, 'Helvetica Neue', sans-serif;
+      font-weight: 300;
+      color: white;
+      font-size: 0.9em;
+    }
+    ul{
+      margin:0px;
+      padding:0px;
+      width: 100%;
+      li{
+        list-style: none;
+        margin: 5px;
+        float:left;
+      }
+    }
+  }
+}
