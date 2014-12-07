@@ -82,9 +82,11 @@
   }
 }
 .item-object{
-  width: calc(100% - 50px);
-  margin-left: 50px;
   border-bottom: rgba(black,0.16) 1px solid;
+  &.tabbed{
+    width: calc(100% - 50px);
+    margin-left: 50px;
+  }
   &.last{
     border-bottom: none;
   }
