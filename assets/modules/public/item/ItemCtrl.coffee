@@ -10,7 +10,7 @@ app.controller "ItemCtrl",[
     $s.addGoal = ->
       #get highest id first then add 1
       id = 0
-      if $s.goal.length
+      if $s.item.goal.length
         $s.item.goal.forEach (g)->
           id = g.id if g.id > id
       id = id+1 
@@ -62,9 +62,9 @@ app.controller "ItemCtrl",[
       
       return impact
       
-    $s.commit = (item)->
+    $s.commit = ->
       if $rp.id isnt "create"
-        path = "/project/"+item.projectId+"/"+item.listId+"/"+item.id+"/commit"
+        path = "/project/"+$rp.id+"/"+$rp.listId+"/"+$rp.itemId+"/commit"
         $l.path path
       return    
     $s.save = ->
