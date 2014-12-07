@@ -20,7 +20,6 @@
         span Moderators
   moderator-selector(ng-model="project.moderators")
       
-  
   md-content
     md-toolbar.md-theme-light
       h1.md-toolbar-tools
@@ -52,7 +51,7 @@
         md-list
           md-item.scale-fade(ng-repeat="item in groupItems = ( items| filter:{listId: group.id }:true )  | orderBy:'index'")
             md-item-content
-              .item-object(ng-class="{last:$last}")
+              .item-object.tabbed(ng-class="{last:$last}")
                 aside
                   .icon-up(ng-click="move('down',item,groupItems)")
                   .icon-down(ng-click="move('up',item,groupItems)")

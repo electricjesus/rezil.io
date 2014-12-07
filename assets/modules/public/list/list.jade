@@ -1,4 +1,50 @@
-h1 Sample List: Users sees all the items in the list or will edit this list object
-div
-  a(href="/project/999/99/9") Go to a Child Object of Sample List
-  a(href="/project/999/99/9/commit") Commit to Child Object of Sample List
+.page.project-page
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span {{ list.name || "Create New Item Group" }}
+  md-content
+    form(style="padding:20px;")
+      md-text-float(label="Group Name",ng-model="list.name")
+      md-text-float(label="Description",ng-model="list.description")
+
+      div(layout="row", layout-align="space-between center")
+        md-button(ng-click="cancel()") CANCEL
+        md-button.md-raise.md-primary(ng-click="save()") SAVE
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Moderators
+  moderator-selector(ng-model="list.moderators")
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Progress
+  md-content#project-progress
+    div(layout="row",layout-align="space-around center")
+      .progress-counter
+        md-progress-circular(md-mode="determinate",value="70")
+        h3 70
+      md-button.md-raised.md-warn(ng-disabled="true") EXECUTE
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Target Commitment Items
+      .toolbar-plus.icon-plus(ng-click="goToItem('create')")
+  md-content
+    md-list
+      md-item.scale-fade(ng-repeat="item in items | orderBy:'index'")
+        md-item-content
+          .item-object(ng-class="{last:$last}")
+            aside
+              .icon-up(ng-click="move('down',item,items)")
+              .icon-down(ng-click="move('up',item,items)")
+            header(ng-click="goToItem(item.id)")
+              h4 {{item.name}}
+              md-progress-linear(md-mode="determinate",ng-value="{{item.progress}}")
+              div {{ item.goal[0].value * (item.progress/100) }} / {{ item.goal[0].value }} {{ item.goal[0].unit }}
+            aside
+              .icon-commit(ng-click="commit(item)")
+  comment-box(type="list",id="{{LIST_ID}}",label="Discussions")
+//a(href="/project/999/99/9") Go to a Child Object of Sample List
+//a(href="/project/999/99/9/commit") Commit to Child Object of Sample List
