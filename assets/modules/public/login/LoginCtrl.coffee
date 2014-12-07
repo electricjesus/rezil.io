@@ -1,4 +1,4 @@
-# Create a factory the will return the firebase auth object
+# Create a factory the will return the firebase auth object.
 app.factory("Auth", [
 "$firebaseAuth"
 ($firebaseAuth) ->
