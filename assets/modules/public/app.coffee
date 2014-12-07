@@ -29,7 +29,7 @@ app.config [
     
     .when "/project/:id/:listId/:itemId/commit", 
       template: JST["public/commit/commit.html"]()
-      controller:"ItemCtrl"
+      controller:"CommitCtrl"
     
     .otherwise redirectTo:"/login"
     

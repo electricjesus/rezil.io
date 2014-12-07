@@ -7,11 +7,19 @@ app.controller "ItemCtrl",[
   ($s, $fb, $rp, $l, $mdToast)->
     $s.ITEM_ID = $rp.itemId
     create = $rp.itemId is "create"
-    
+    $s.addGoal = ->
+      #get highest id first then add 1
+      id = 0
+      if $s.goal.length
+        $s.item.goal.forEach (g)->
+          id = g.id if g.id > id
+      id = id+1 
+      $s.item.goal.push id:id
     $s.item =
       moderators:[]
       goal:[
         {
+          id:1
           unit:"Baboy"
           value: 200
         }  
