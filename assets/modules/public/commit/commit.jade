@@ -1,4 +1,30 @@
-//editor of commit
-h1 Commiting to Child Object: User Committing on an Item
-
-a(href="/project/999/99/9/") Commit (goes back to child object)
+.page.commit-page
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span {{item.name}}
+  md-content#commit-panel
+    div#status-goal
+      div.circle-data-goal
+        label Goal
+        h1 {{item.goal[0].value}}
+        h4 {{item.goal[0].unit}}
+      #circle-goal
+        div(layout="row",layout-align="space-around")
+          md-progress-circular(md-mode="determinate",value="{{getProgress()}}",md-diameter=100)
+        h1 {{getProgress()}}%
+      div.circle-data-goal.committed
+        label Committed
+        h1 {{item.goal[0].value*( item.progress/100 )}}
+        h4 {{item.goal[0].unit}}
+    
+    
+    form#commit-form
+      h2 You are committing
+      input(type="number",placeholder="amount",ng-model="commit.value",min=0)
+      h3 select unit
+      md-radio-group(ng-model="commit.unit")
+        md-radio-button(ng-repeat="goal in item.goal",value="{{goal.id}}") {{goal.unit}}
+      section(layout="row",layout-align="center center",layout-margin)
+        div(flex=90)
+          md-button.expand.md-raised.md-primary(ng-click="submit()") SUBMIT COMMIT
