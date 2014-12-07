@@ -1,0 +1,16 @@
+@import '../../core_styles/core';
+
+.commit-object{
+  
+  padding:5px;
+  header{
+    line-height: 30px;
+  }
+  footer{
+    line-height: 20px;
+    font-weight: 300;
+    font-size: 0.8em;
+    margin-top: 5px;
+  }
+}
+
