@@ -1,4 +1,50 @@
-// view or editor of item object
-h1 Child Object: User Either editing an item or viewing to commit
-div
-  a(href="/project/999/99/9/commit") Commit to Child Object of Sample List
+.page.project-page
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span {{ Item.name || "Create New Item" }}
+  md-content
+    form(style="padding:20px;")
+      md-text-float(label="Item Name",ng-model="item.name")
+      md-text-float(label="Description",ng-model="item.description")
+      div(layout="row", layout-align="space-between center")
+        md-button(ng-click="cancel()") CANCEL
+        md-button.md-raise.md-primary(ng-click="save()") SAVE
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span In-Charge
+  moderator-selector(ng-model="item.moderators")
+  
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Progress
+  md-content#project-progress
+    div(layout="row",layout-align="space-around center")
+      .progress-counter
+        md-progress-circular(md-mode="determinate",value="70")
+        h3 70
+      md-button.md-raised.md-warn(ng-disabled="true") EXECUTE
+
+  md-content
+    md-toolbar.md-theme-light
+      h1.md-toolbar-tools
+        span Commitments
+      .toolbar-plus.icon-commit(ng-click="commit(item)")
+  
+  md-content
+    md-list
+      md-item.scale-fade(ng-repeat="commit in commits")
+        .commit-object
+          header(layout="row",layout-align="space-between center")
+            div {{ commit.user.name }}
+            div {{ commit.value }} {{ item.goal[commit.unit].unit}}
+          md-progress-linear(md-mode="determinate",ng-value="{{impact(commit)}}")
+          footer(layout="row",layout-align="space-between center")
+            div < {{ commit.user.email }} >
+            div {{ commit.date | date:'mediumDate' }}
+        md-divider(ng-if="!$last")
+    section#commit-container(layout="row",layout-align="center center",layout-margin)
+      div(flex=90)
+        md-button.expand.md-raised.md-primary(ng-click="commit(item)") COMMIT
