@@ -7,13 +7,13 @@ div#login
     ul
       li
         // this function will redirect to facebook oauth authorize
-        a(ng-click="auth.$authWithOAuthRedirect('facebook')")
+        a(href="#" ng-click="thirdPartyLogin('facebook')")
           img(src="http://s28.postimg.org/z1izibfzd/icon_fb.png",width=60,height=60)
       li
         // this function will redirect to twitter oauth authorize
-        a(ng-click="auth.$authWithOAuthRedirect('google')")
+        a(href="#" ng-click="thirdPartyLogin('google')")
           img(src="http://s28.postimg.org/4ld2k6ug9/icon_g.png",width=60,height=60)
       li
         // this function will redirect to twitter oauth authorize
-        a(ng-click="auth.$authWithOAuthRedirect('twitter')")
+        a(href="#" ng-click="thirdPartyLogin('twitter')")
           img(src="http://s28.postimg.org/sqidfn44p/icon_twt.png",width=60,height=60)
